@@ -11,23 +11,23 @@ namespace ProjetDeTests
         public void ValiderTest()
         {
             // Le nombre de jours d'achat est < à 30 jours
-            
+            Assert.AreEqual(true, Condition.Valider(20));
 
             // Le nombre de jours d'achat est > à 30 jours
-            
+            Assert.AreEqual(false, Condition.Valider(40));
         }
 
         [TestMethod()]
         public void CalculerMontantMaxTest()
         {
             // Pour la catégorie livre
-            
+            Assert.AreEqual(30, Condition.CalculerMontantMax("Livres"));
 
             // Pour la catégorie jouet
-            
+            Assert.AreEqual(50, Condition.CalculerMontantMax("LesJouets"));
 
             // Pour la catégorie informatique
-            
+            Assert.AreEqual(1000, Condition.CalculerMontantMax("Informatique"));
         }
 
         [TestMethod()]
