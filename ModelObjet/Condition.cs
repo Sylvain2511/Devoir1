@@ -47,30 +47,59 @@ namespace ModelObjet
         public static double CalculerMontantRembourse(int unNbDeJours, string uneCategorie, bool estMembre, string unEtat, int unPrix)
         {
             double montantRembourse = 0;
-            if(unNbDeJours < 30)
+            double taux = 0;
+            if(Valider(unNbDeJours) == true)
             {
-                if(estMembre == true)
+                if (unPrix < CalculerMontantMax(uneCategorie))
                 {
-
+                    if (estMembre == true)
+                    {
+                        
+                    }
+                    else
+                    {
+                        taux = 0.2;
+                    }
                 }
+                
             }
             else
             {
-                montantRembourse = 0;
-                return montantRembourse;
+                return montantRembourse = 0;
             }
-            return montantRembourse;
+            return Math.Round(unPrix * (1-taux),2);
 
         }
         // Permet de renvoyer la réduction si on est membre ou pas
         public static double CalculerReductionMembre(bool estMembre)
         {
-            return 0;
+            double reductionMembre = 0;
+            
+            if (estMembre == true)
+            {
+                reductionMembre = 0;
+            }
+            else
+            {
+                reductionMembre = 0.20;
+            }
+            return reductionMembre;
         }
         // Permet de renvoyer la réduction en fonction de l'état de l'achat
         public static double CalculerReduction(string unEtat)
         {
-            return 0;
+            double tauxReduction = 0;
+            
+            if (unEtat == "Abimé" || unEtat == "Très abimé")
+            {
+                tauxReduction = 0.30;
+            }
+            if(unEtat == "Bon" || unEtat == "Très bon")
+            {
+                tauxReduction = 0.10;
+            }
+            
+            return tauxReduction;
         }
     }
 }

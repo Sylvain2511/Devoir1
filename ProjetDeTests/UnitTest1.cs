@@ -34,20 +34,20 @@ namespace ProjetDeTests
         public void CalculerMontantRembourseTest()
         {
             // Un livre achété 24 euros depuis 15 jours avec un état "Très abimé" en étant non membre
-
+            Assert.AreEqual(, Condition.CalculerMontantRembourse(15, "Livre", false, "Très abimé", 24));
             // Un livre achété 24 euros depuis 15 jours avec un état "Bon" en étant membre
-
+            Assert.AreEqual(, Condition.CalculerMontantRembourse(15, "Livre", true, "Bon", 24));
         }
 
         [TestMethod()]
         public void CalculerReductionMembreTest()
         {
             // Il est membre
-            
+            Assert.AreEqual(0, Condition.CalculerReductionMembre(true));
 
 
             // Il n'est pas membre
-            
+            Assert.AreEqual(0.20, Condition.CalculerReductionMembre(false));
 
         }
 
@@ -55,11 +55,11 @@ namespace ProjetDeTests
         public void CalculerReductionTest()
         {
             // Pour un état "bon"
-            
+            Assert.AreEqual(0.10, Condition.CalculerReduction("Bon"));
 
 
             // Pour un état "abimé"
-            
+            Assert.AreEqual(0.30, Condition.CalculerReduction("Abimé"));
 
         }
     }
